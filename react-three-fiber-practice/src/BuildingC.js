@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
+import * as THREE from 'three';
 
 function StorageAreaFloor() {
     const storageAreaWidth = 54.4;  // X-axis (East-West)
@@ -15,38 +16,62 @@ function StorageAreaFloor() {
             {/* Surrounding Forklift Path - Grey */}
             <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
                 <planeGeometry args={[storageAreaWidth + forkliftPathWidth * 2, storageAreaDepth + forkliftPathWidth * 2]} />
-                <meshStandardMaterial color="grey" /> {/* Forklift path color */}
+                <meshStandardMaterial color="grey" />
             </mesh>
 
             {/* Storage Area Floor - Red */}
-            <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 0]} receiveShadow> {/* Slight elevation for visibility */}
+            <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 0]} receiveShadow>
                 <planeGeometry args={[storageAreaWidth, storageAreaDepth]} />
-                <meshStandardMaterial color="red" /> {/* Storage area color */}
+                <meshStandardMaterial color="red" />
             </mesh>
 
             {/* East-West Division Line */}
-            <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.02, 0]} receiveShadow> {/* Positioned across the middle, east to west */}
-                <planeGeometry args={[storageAreaWidth, divisionLineWidth]} /> {/* Correct east-west direction */}
-                <meshStandardMaterial color="yellow" /> {/* Yellow division line */}
+            <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.02, 0]} receiveShadow>
+                <planeGeometry args={[storageAreaWidth, divisionLineWidth]} />
+                <meshStandardMaterial color="yellow" />
             </mesh>
 
             {/* North-South Walking Path Line */}
-            <mesh rotation={[-Math.PI / 2, 0, 0]} position={[walkingPathOffset - storageAreaWidth / 2, 0.02, 0]} receiveShadow> {/* Positioned 16.9 meters from west side */}
+            <mesh rotation={[-Math.PI / 2, 0, 0]} position={[walkingPathOffset - storageAreaWidth / 2, 0.02, 0]} receiveShadow>
                 <planeGeometry args={[walkingPathWidth, storageAreaDepth]} />
-                <meshStandardMaterial color="blue" /> {/* Blue walking path */}
+                <meshStandardMaterial color="blue" />
             </mesh>
         </>
     );
 }
 
+function BayLines({ amount }) {
+    const storageAreaWidth = 54.4;  // X-axis (East-West)
+    const storageAreaDepth = 17.9;  // Z-axis (North-South)
+    const angle = (30 * Math.PI) / 180; // Convert 60 degrees to radians
+    const baySpacing = storageAreaWidth / (amount + 1); // Calculate spacing between bays
+
+    const vertices = [];
+
+    for (let i = 1; i <= amount; i++) {
+        const startX = -storageAreaWidth / 2 + i * baySpacing; // Starting point along the X-axis
+        const startZ = storageAreaDepth / 2; // Start from the top edge (Z-axis)
+
+        const endX = startX + storageAreaDepth * Math.tan(angle); // Calculate X-endpoint based on 60-degree angle
+        const endZ = -storageAreaDepth / 2; // End at the bottom edge (Z-axis)
+
+        vertices.push(new THREE.Vector3(startX, 0.1, startZ)); // Start position
+        vertices.push(new THREE.Vector3(endX, 0.1, endZ)); // End position
+    }
+
+    const lineMaterial = new THREE.LineBasicMaterial({ color: 'black' });
+    const lineGeometry = new THREE.BufferGeometry().setFromPoints(vertices);
+    return <lineSegments geometry={lineGeometry} material={lineMaterial} />;
+}
+
 function BuildingC() {
     return (
         <Canvas
-            style={{ height: '100vh', width: '100vw' }}
+            style={{height: '100vh', width: '100vw'}}
             shadows
-            camera={{ position: [0, 40, 60], fov: 50 }} // Top-down view with a slight angle
+            camera={{position: [0, 40, 60], fov: 50}} // Top-down view with a slight angle
         >
-            <ambientLight intensity={0.5} />
+            <ambientLight intensity={0.5}/>
             <directionalLight
                 position={[10, 20, 10]}
                 intensity={1}
@@ -56,9 +81,13 @@ function BuildingC() {
             />
 
             {/* Storage Area Floor and Surrounding Forklift Path */}
-            <StorageAreaFloor />
+            <StorageAreaFloor/>
 
-            <OrbitControls maxPolarAngle={Math.PI / 2} /> {/* Top-down camera controls */}
+            {/* Draw the bays with 60 degree angled lines */}
+            <BayLines amount={30}/> {/* Example with 10 bays */}
+
+            <OrbitControls maxPolarAngle={Math.PI / 2}/> {/* Top-down camera controls */}
+            <axesHelper position={[0,0,-20]} args={[5]}/>
         </Canvas>
     );
 }
