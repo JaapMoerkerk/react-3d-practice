@@ -2,13 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Home from './Home';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import DynamicCloudPoints from "./DynamicPointCloud";
+import BuildingC from "./BuildingC";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DynamicCloudPoints />
+    <Router>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/app" element={<App />} />
+            <Route path="/dynamic-cloud-points" element={<DynamicCloudPoints />} />
+            <Route path="/buildingc" element={<BuildingC />} />
+        </Routes>
+    </Router>
   </React.StrictMode>
 );
 
