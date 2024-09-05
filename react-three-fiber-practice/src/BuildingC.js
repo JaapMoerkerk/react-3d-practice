@@ -40,48 +40,58 @@ function StorageAreaFloor() {
     );
 }
 
-function NorthHalfOutline() {
+function SouthBays({ bayCount }) {
     const storageAreaWidth = 54.4;  // X-axis (East-West)
     const storageAreaDepth = 17.9;  // Z-axis (North-South)
+    const angle = Math.PI / 6;  // 30 degrees in radians
+    const baySpacing = storageAreaWidth / bayCount;  // Calculate spacing between bays
 
-    // Define the vertices for the north half outline
-    const northHalfVertices = [
-        new THREE.Vector3(-storageAreaWidth / 2, 0.1, 0),                           // West-side point at division line
-        new THREE.Vector3(-storageAreaWidth / 2, 0.1, storageAreaDepth / 2),        // North-west corner
-        new THREE.Vector3(storageAreaWidth / 2, 0.1, storageAreaDepth / 2),         // North-east corner
-    ];
+    const bayLines = [];
 
-    const lineMaterial = new THREE.LineBasicMaterial({ color: 'blue' });
-    const lineGeometry = new THREE.BufferGeometry().setFromPoints(northHalfVertices);
+    for (let i = 0; i <= bayCount; i++) {
+        const startX = -storageAreaWidth / 2 + i * baySpacing;  // Starting X position
+        const startZ = -storageAreaDepth / 2;  // Starting Z position (bottom of the south half)
 
-    return <line geometry={lineGeometry} material={lineMaterial} />;
-}
+        // Calculate the ending X and Z positions using the 30-degree angle
+        let endX = startX + storageAreaDepth * Math.tan(angle);  // X position after the line is angled
+        let endZ = 0;  // The Z position for the division line
 
-function SouthHalfOutline() {
-    const storageAreaWidth = 54.4;  // X-axis (East-West)
-    const storageAreaDepth = 17.9;  // Z-axis (North-South)
+        // If the line hits the east or west side, adjust its end position to stay within bounds
+        if (endX > storageAreaWidth / 2) {
+            const overreach = (endX - storageAreaWidth / 2) / Math.tan(angle);  // Calculate how far the line would go outside
+            endX = storageAreaWidth / 2;  // Clamp it to the storage area's boundary
+            endZ = startZ + overreach;  // Adjust the end Z position accordingly
+        } else if (endX < -storageAreaWidth / 2) {
+            const overreach = (-storageAreaWidth / 2 - endX) / Math.tan(angle);  // Calculate how far the line would go outside
+            endX = -storageAreaWidth / 2;  // Clamp it to the west boundary
+            endZ = startZ + overreach;  // Adjust the end Z position accordingly
+        }
 
-    // Define the vertices for the south half outline
-    const southHalfVertices = [
-        new THREE.Vector3(-storageAreaWidth / 2, 0.1, -storageAreaDepth / 2),       // South-west corner
-        new THREE.Vector3(storageAreaWidth / 2, 0.1, -storageAreaDepth / 2),        // South-east corner
-        new THREE.Vector3(storageAreaWidth / 2, 0.1, 0),                            // East-side point at division line
-    ];
+        // Create vertices for each bay line
+        const vertices = [
+            new THREE.Vector3(startX, 0.1, startZ),  // Start position
+            new THREE.Vector3(endX, 0.1, endZ)  // End position
+        ];
 
-    const lineMaterial = new THREE.LineBasicMaterial({ color: 'green' });
-    const lineGeometry = new THREE.BufferGeometry().setFromPoints(southHalfVertices);
+        // Create the line geometry and material
+        const lineMaterial = new THREE.LineBasicMaterial({ color: 'green' });
+        const lineGeometry = new THREE.BufferGeometry().setFromPoints(vertices);
 
-    return <line geometry={lineGeometry} material={lineMaterial} />;
+        // Add each bay line to the array
+        bayLines.push(<line key={i} geometry={lineGeometry} material={lineMaterial} />);
+    }
+
+    return <>{bayLines}</>;
 }
 
 function BuildingC() {
     return (
         <Canvas
-            style={{height: '100vh', width: '100vw'}}
+            style={{ height: '100vh', width: '100vw' }}
             shadows
-            camera={{position: [0, 40, 60], fov: 50}} // Top-down view with a slight angle
+            camera={{ position: [0, 40, 60], fov: 50 }} // Top-down view with a slight angle
         >
-            <ambientLight intensity={0.5}/>
+            <ambientLight intensity={0.5} />
             <directionalLight
                 position={[10, 20, 10]}
                 intensity={1}
@@ -91,14 +101,13 @@ function BuildingC() {
             />
 
             {/* Storage Area Floor and Surrounding Forklift Path */}
-            <StorageAreaFloor/>
+            <StorageAreaFloor />
 
-            {/* Draw the north and south outline lines */}
-            <NorthHalfOutline />
-            <SouthHalfOutline />
+            {/* Draw the south half bay lines */}
+            <SouthBays bayCount={30} />
 
-            <OrbitControls maxPolarAngle={Math.PI / 2}/> {/* Top-down camera controls */}
-            <axesHelper position={[0,0,-20]} args={[5]}/>
+            <OrbitControls maxPolarAngle={Math.PI / 2} /> {/* Top-down camera controls */}
+            <axesHelper position={[0, 0, -20]} args={[5]} />
         </Canvas>
     );
 }
