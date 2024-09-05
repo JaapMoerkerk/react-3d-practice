@@ -40,50 +40,6 @@ function StorageAreaFloor() {
     );
 }
 
-function SouthBays({ bayCount }) {
-    const storageAreaWidth = 54.4;  // X-axis (East-West)
-    const storageAreaDepth = 17.9;  // Z-axis (North-South)
-    const angle = Math.PI / 6;  // 30 degrees in radians
-    const baySpacing = storageAreaWidth / bayCount;  // Calculate spacing between bays
-
-    const bayLines = [];
-
-    for (let i = 0; i <= bayCount; i++) {
-        const startX = -storageAreaWidth / 2 + i * baySpacing;  // Starting X position
-        const startZ = -storageAreaDepth / 2;  // Starting Z position (bottom of the south half)
-
-        // Calculate the ending X and Z positions using the 30-degree angle
-        let endX = startX + storageAreaDepth * Math.tan(angle);  // X position after the line is angled
-        let endZ = 0;  // The Z position for the division line
-
-        // If the line hits the east or west side, adjust its end position to stay within bounds
-        if (endX > storageAreaWidth / 2) {
-            const overreach = (endX - storageAreaWidth / 2) / Math.tan(angle);  // Calculate how far the line would go outside
-            endX = storageAreaWidth / 2;  // Clamp it to the storage area's boundary
-            endZ = startZ + overreach;  // Adjust the end Z position accordingly
-        } else if (endX < -storageAreaWidth / 2) {
-            const overreach = (-storageAreaWidth / 2 - endX) / Math.tan(angle);  // Calculate how far the line would go outside
-            endX = -storageAreaWidth / 2;  // Clamp it to the west boundary
-            endZ = startZ + overreach;  // Adjust the end Z position accordingly
-        }
-
-        // Create vertices for each bay line
-        const vertices = [
-            new THREE.Vector3(startX, 0.1, startZ),  // Start position
-            new THREE.Vector3(endX, 0.1, endZ)  // End position
-        ];
-
-        // Create the line geometry and material
-        const lineMaterial = new THREE.LineBasicMaterial({ color: 'green' });
-        const lineGeometry = new THREE.BufferGeometry().setFromPoints(vertices);
-
-        // Add each bay line to the array
-        bayLines.push(<line key={i} geometry={lineGeometry} material={lineMaterial} />);
-    }
-
-    return <>{bayLines}</>;
-}
-
 function BuildingC() {
     return (
         <Canvas
@@ -102,9 +58,6 @@ function BuildingC() {
 
             {/* Storage Area Floor and Surrounding Forklift Path */}
             <StorageAreaFloor />
-
-            {/* Draw the south half bay lines */}
-            <SouthBays bayCount={30} />
 
             <OrbitControls maxPolarAngle={Math.PI / 2} /> {/* Top-down camera controls */}
             <axesHelper position={[0, 0, -20]} args={[5]} />
