@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
@@ -40,28 +40,38 @@ function StorageAreaFloor() {
     );
 }
 
-function BayLines({ amount }) {
+function NorthHalfOutline() {
     const storageAreaWidth = 54.4;  // X-axis (East-West)
     const storageAreaDepth = 17.9;  // Z-axis (North-South)
-    const angle = (30 * Math.PI) / 180; // Convert 60 degrees to radians
-    const baySpacing = storageAreaWidth / (amount + 1); // Calculate spacing between bays
 
-    const vertices = [];
+    // Define the vertices for the north half outline
+    const northHalfVertices = [
+        new THREE.Vector3(-storageAreaWidth / 2, 0.1, 0),                           // West-side point at division line
+        new THREE.Vector3(-storageAreaWidth / 2, 0.1, storageAreaDepth / 2),        // North-west corner
+        new THREE.Vector3(storageAreaWidth / 2, 0.1, storageAreaDepth / 2),         // North-east corner
+    ];
 
-    for (let i = 1; i <= amount; i++) {
-        const startX = -storageAreaWidth / 2 + i * baySpacing; // Starting point along the X-axis
-        const startZ = storageAreaDepth / 2; // Start from the top edge (Z-axis)
+    const lineMaterial = new THREE.LineBasicMaterial({ color: 'blue' });
+    const lineGeometry = new THREE.BufferGeometry().setFromPoints(northHalfVertices);
 
-        const endX = startX + storageAreaDepth * Math.tan(angle); // Calculate X-endpoint based on 60-degree angle
-        const endZ = -storageAreaDepth / 2; // End at the bottom edge (Z-axis)
+    return <line geometry={lineGeometry} material={lineMaterial} />;
+}
 
-        vertices.push(new THREE.Vector3(startX, 0.1, startZ)); // Start position
-        vertices.push(new THREE.Vector3(endX, 0.1, endZ)); // End position
-    }
+function SouthHalfOutline() {
+    const storageAreaWidth = 54.4;  // X-axis (East-West)
+    const storageAreaDepth = 17.9;  // Z-axis (North-South)
 
-    const lineMaterial = new THREE.LineBasicMaterial({ color: 'black' });
-    const lineGeometry = new THREE.BufferGeometry().setFromPoints(vertices);
-    return <lineSegments geometry={lineGeometry} material={lineMaterial} />;
+    // Define the vertices for the south half outline
+    const southHalfVertices = [
+        new THREE.Vector3(-storageAreaWidth / 2, 0.1, -storageAreaDepth / 2),       // South-west corner
+        new THREE.Vector3(storageAreaWidth / 2, 0.1, -storageAreaDepth / 2),        // South-east corner
+        new THREE.Vector3(storageAreaWidth / 2, 0.1, 0),                            // East-side point at division line
+    ];
+
+    const lineMaterial = new THREE.LineBasicMaterial({ color: 'green' });
+    const lineGeometry = new THREE.BufferGeometry().setFromPoints(southHalfVertices);
+
+    return <line geometry={lineGeometry} material={lineMaterial} />;
 }
 
 function BuildingC() {
@@ -83,8 +93,9 @@ function BuildingC() {
             {/* Storage Area Floor and Surrounding Forklift Path */}
             <StorageAreaFloor/>
 
-            {/* Draw the bays with 60 degree angled lines */}
-            <BayLines amount={30}/> {/* Example with 10 bays */}
+            {/* Draw the north and south outline lines */}
+            <NorthHalfOutline />
+            <SouthHalfOutline />
 
             <OrbitControls maxPolarAngle={Math.PI / 2}/> {/* Top-down camera controls */}
             <axesHelper position={[0,0,-20]} args={[5]}/>
