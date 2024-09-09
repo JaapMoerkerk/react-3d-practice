@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import DynamicCloudPoints from "./DynamicPointCloud";
 import BuildingC from "./BuildingC";
+import BuildingCV2 from "./BuildingCV2";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +18,7 @@ root.render(
             <Route path="/app" element={<App />} />
             <Route path="/dynamic-cloud-points" element={<DynamicCloudPoints />} />
             <Route path="/buildingc" element={<BuildingC />} />
+            <Route path="/buildingc-v2" element={<BuildingCV2 />} />
         </Routes>
     </Router>
   </React.StrictMode>

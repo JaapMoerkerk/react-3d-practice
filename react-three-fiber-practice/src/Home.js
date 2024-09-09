@@ -26,6 +26,11 @@ function Home() {
                             Building C (V1)
                         </Link>
                     </li>
+                    <li style={{ marginBottom: '10px' }}>
+                        <Link to="/buildingc-v2" style={{ fontSize: '20px', textDecoration: 'none', color: 'blue' }}>
+                            Building C (V2)
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </div>
