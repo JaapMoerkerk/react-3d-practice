@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useFBX } from "@react-three/drei";
-import './App.css';
+import '../App.css';
 
 // FactoryModel with position and rotation control
 function FactoryModel({ position, rotation }) {

@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Home from './Home';
+import App from './Pages/App';
+import Home from './Pages/Home';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-import DynamicCloudPoints from "./DynamicPointCloud";
-import BuildingC from "./BuildingC";
-import BuildingCV2 from "./BuildingCV2";
+import DynamicCloudPoints from "./Pages/DynamicPointCloud";
+import BuildingC from "./Pages/BuildingC";
+import BuildingCV2 from "./Pages/BuildingCV2";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
