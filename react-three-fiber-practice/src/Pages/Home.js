@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import '../App.css';
 function Home() {
     return (
         <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <h1 style={{color: "red", fontWeight: 800}}>Dakri Cartons Ltd</h1>
+            <h1 style={{color: "red", fontWeight: 800,}}>Dakri Cartons Ltd</h1>
                 <h2>
                 Digital Twin practice hub
                 </h2>

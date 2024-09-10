@@ -1,14 +1,8 @@
 // src/BuildingCV2.js
-
 import React, { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
-
-// Component to load and render the GLTF model
-const Model = () => {
-    const { scene } = useGLTF('/3d-models/buildingc-v2/buildingc.gltf');
-    return <primitive object={scene} />;
-};
+import { OrbitControls } from '@react-three/drei';
+import Model from '../Components/Model';
 
 const BuildingCV2 = () => {
     const [loading, setLoading] = useState(true);
@@ -18,7 +12,7 @@ const BuildingCV2 = () => {
             {loading && <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white' }}>Loading...</div>}
             <Canvas
                 style={{ height: '100vh', width: '100vw' }} // Full-screen canvas
-                camera={{ position: [0, 5, 10], fov: 50 }} // Camera setup
+                camera={{ position: [23, 5, 10], fov: 50 }} // Camera setup
                 onCreated={({ gl }) => {
                     gl.setAnimationLoop(() => setLoading(false));
                 }}
