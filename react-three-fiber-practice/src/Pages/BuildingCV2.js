@@ -3,9 +3,14 @@ import React, { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Model from '../Components/Model';
+import DynamicPoint from "../Components/DynamicPoint";
 
 const BuildingCV2 = () => {
     const [loading, setLoading] = useState(true);
+
+    //Storage level vars
+    const level1 = 1.3;
+    const level2 = 2.5;
 
     return (
         <>
@@ -27,6 +32,8 @@ const BuildingCV2 = () => {
                 <Suspense fallback={null}>
                     <Model />
                 </Suspense>
+                <DynamicPoint position={[1, level1, 0]} />
+                <DynamicPoint position={[1 ,level2, 0]} />
             </Canvas>
         </>
     );
