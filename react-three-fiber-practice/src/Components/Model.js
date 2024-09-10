@@ -1,25 +1,33 @@
+// src/Model.js
 import React, { useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import Popup from './Popup'; // Assume you have a Popup component
 
-const Model = () => {
+const Model = ({ onBayPositionsRetrieved }) => {
     const { scene } = useGLTF('/3d-models/buildingc-v2/buildingc.gltf');
     const [hoveredBay, setHoveredBay] = useState(null);
     const hoverColor = new THREE.Color('green');
     const originalColor = new THREE.Color('lightblue');
+    const bayPositions = [];
 
     useEffect(() => {
-        // Set the initial state when the scene is loaded
+        // Traverse the scene and store the bay positions
         scene.traverse((child) => {
             if (child.name.startsWith('bay')) {
                 // Store the original material for restoration
                 child.userData.originalMaterial = child.material;
                 child.userData.isHovered = false; // State to track hover
                 child.material.color.copy(originalColor); // Set default color
+
+                // Store the bay's position
+                bayPositions.push(child.position.clone());
             }
         });
+
+        // Call the callback function to pass the bay positions to the parent component
+        onBayPositionsRetrieved(bayPositions);
     }, [scene]);
 
     const handlePointerOver = (event) => {
