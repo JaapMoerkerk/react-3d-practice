@@ -100,6 +100,8 @@ const BuildingCV2 = () => {
                 onClick={handleToggleMode}
                 style={{
                     position: 'absolute',
+                    display: 'flex',
+                    justifyContent: 'center',
                     width: '20px',
                     top: '10px',
                     right: '10px',
