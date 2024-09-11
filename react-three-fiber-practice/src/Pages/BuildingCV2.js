@@ -1,18 +1,18 @@
 // src/BuildingCV2.js
-import React, {Suspense, useEffect, useState} from 'react';
-import {Canvas, useFrame} from '@react-three/fiber';
+import React, { Suspense, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Model from '../Components/Model';
 import DynamicPoint from '../Components/DynamicPoint';
 import * as THREE from 'three';
-import Forklift from "../Components/Forklift";
+import Forklift from '../Components/Forklift';
 
 const BuildingCV2 = () => {
     const [loading, setLoading] = useState(true);
     const [bayPositions, setBayPositions] = useState([]);
 
     // Storage level vars
-    const level1 = 0.6;
+    const level1 = 0;
     const level2 = 1.5;
     const dpSpacing = 1.15;
     const angle = THREE.MathUtils.degToRad(-60);
@@ -54,32 +54,33 @@ const BuildingCV2 = () => {
             // Layer 1 (lower level)
             dynamicPoints.push(
                 <DynamicPoint
-                    key={`${bayPosition.x}-${bayPosition.z}-dp1-${i}`}
+                    key={`bay-${bayIndex}-dp1-${i}`}  // Unique key for Layer 1
                     position={[
                         bayPosition.x + xOffset,
                         level1,
                         bayPosition.z + zOffset
                     ]}
-                    type={1}
+                    isFilled={false} // Change to true if the spot is filled
                 />
             );
 
             // Layer 2 (upper level)
             dynamicPoints.push(
                 <DynamicPoint
-                    key={`${bayPosition.x}-${bayPosition.z}-dp2-${i}`}
+                    key={`bay-${bayIndex}-dp2-${i}`}  // Unique key for Layer 2
                     position={[
                         bayPosition.x + xOffset,
                         level2,
                         bayPosition.z + zOffset
                     ]}
-                    type={2}
+                    isFilled={false} // Change to true if the spot is filled
                 />
             );
         }
 
         return dynamicPoints;
     };
+
 
     return (
         <>
@@ -111,8 +112,8 @@ const BuildingCV2 = () => {
                 <OrbitControls />
                 {/* Suspense to handle model loading */}
                 <Suspense fallback={null}>
-                    <Model onBayPositionsRetrieved={handleBayPositionsRetrieved}/>
-                    <Forklift position={forkliftPosition} rotation={forkliftRotation}/>
+                    <Model onBayPositionsRetrieved={handleBayPositionsRetrieved} />
+                    <Forklift position={forkliftPosition} rotation={forkliftRotation} />
                 </Suspense>
 
                 {/* Generate dynamic points for each bay */}
