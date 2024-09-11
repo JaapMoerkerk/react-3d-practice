@@ -10,6 +10,7 @@ import Forklift from '../Components/Forklift';
 const BuildingCV2 = () => {
     const [loading, setLoading] = useState(true);
     const [bayPositions, setBayPositions] = useState([]);
+    const [viewMode, setViewMode] = useState('All'); // Default mode: 'All'
 
     // Storage level vars
     const level1 = 0;
@@ -35,6 +36,13 @@ const BuildingCV2 = () => {
         61: 5,
     };
 
+    // Toggle between view modes: All, 1, or 2
+    const handleToggleMode = () => {
+        if (viewMode === 'All') setViewMode('1');
+        else if (viewMode === '1') setViewMode('2');
+        else setViewMode('All');
+    };
+
     // Callback to receive bay positions from Model
     const handleBayPositionsRetrieved = (positions) => {
         setBayPositions(positions);
@@ -51,39 +59,63 @@ const BuildingCV2 = () => {
             const xOffset = Math.cos(angle) * dpSpacing * (i - (halfPoints - 0.5));
             const zOffset = Math.sin(angle) * dpSpacing * (i - (halfPoints - 0.5));
 
-            // Layer 1 (lower level)
-            dynamicPoints.push(
-                <DynamicPoint
-                    key={`bay-${bayIndex}-dp1-${i}`}  // Unique key for Layer 1
-                    position={[
-                        bayPosition.x + xOffset,
-                        level1,
-                        bayPosition.z + zOffset
-                    ]}
-                    isFilled={false} // Change to true if the spot is filled
-                />
-            );
+            if (viewMode === 'All' || viewMode === '1') {
+                // Layer 1 (lower level)
+                dynamicPoints.push(
+                    <DynamicPoint
+                        key={`bay-${bayIndex}-dp1-${i}`}
+                        position={[
+                            bayPosition.x + xOffset,
+                            level1,
+                            bayPosition.z + zOffset
+                        ]}
+                        isFilled={false} // Change to true if the spot is filled
+                    />
+                );
+            }
 
-            // Layer 2 (upper level)
-            dynamicPoints.push(
-                <DynamicPoint
-                    key={`bay-${bayIndex}-dp2-${i}`}  // Unique key for Layer 2
-                    position={[
-                        bayPosition.x + xOffset,
-                        level2,
-                        bayPosition.z + zOffset
-                    ]}
-                    isFilled={false} // Change to true if the spot is filled
-                />
-            );
+            if (viewMode === 'All' || viewMode === '2') {
+                // Layer 2 (upper level)
+                dynamicPoints.push(
+                    <DynamicPoint
+                        key={`bay-${bayIndex}-dp2-${i}`}
+                        position={[
+                            bayPosition.x + xOffset,
+                            level2,
+                            bayPosition.z + zOffset
+                        ]}
+                        isFilled={false} // Change to true if the spot is filled
+                    />
+                );
+            }
         }
 
         return dynamicPoints;
     };
 
-
     return (
         <>
+            {/* Toggle Button */}
+            <div
+                onClick={handleToggleMode}
+                style={{
+                    position: 'absolute',
+                    width: '20px',
+                    top: '10px',
+                    right: '10px',
+                    padding: '10px',
+                    backgroundColor: '#484848',
+                    color: 'white',
+                    cursor: 'pointer',
+                    fontFamily: 'Poppins',
+                    fontWeight: 'bold',
+                    borderRadius: '5px',
+                    zIndex: 1, // Ensure the button is on top of the 3D canvas
+                }}
+            >
+                {viewMode}
+            </div>
+
             {loading && (
                 <div
                     style={{
