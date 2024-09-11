@@ -1,10 +1,11 @@
 // src/BuildingCV2.js
-import React, { Suspense, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, {Suspense, useEffect, useState} from 'react';
+import {Canvas, useFrame} from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Model from '../Components/Model';
 import DynamicPoint from '../Components/DynamicPoint';
 import * as THREE from 'three';
+import Forklift from "../Components/Forklift";
 
 const BuildingCV2 = () => {
     const [loading, setLoading] = useState(true);
@@ -16,6 +17,11 @@ const BuildingCV2 = () => {
     const dpSpacing = 1.15;
     const angle = THREE.MathUtils.degToRad(-60);
     const defaultDPs = 8;
+
+    // Mock up model useState vars
+    const [forkliftPosition, setForkliftPosition] = useState([30, 0.1, 1.2]);
+    const [forkliftRotation, setForkliftRotation] = useState([0, Math.PI / 2, 0]);
+    const [paperReelPosition, setPaperReelPosition] = useState([5, 0, -5]);
 
     // Hard-coded exceptions for specific bays
     const dpExceptions = {
@@ -105,7 +111,8 @@ const BuildingCV2 = () => {
                 <OrbitControls />
                 {/* Suspense to handle model loading */}
                 <Suspense fallback={null}>
-                    <Model onBayPositionsRetrieved={handleBayPositionsRetrieved} />
+                    <Model onBayPositionsRetrieved={handleBayPositionsRetrieved}/>
+                    <Forklift position={forkliftPosition} rotation={forkliftRotation}/>
                 </Suspense>
 
                 {/* Generate dynamic points for each bay */}
