@@ -15,12 +15,7 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"Cylinder",
-			"scale":[
-				0.699999988079071,
-				1,
-				0.699999988079071
-			],
+			"name":"Mesh_0",
 			"translation":[
 				0,
 				1,
@@ -31,22 +26,19 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"paperbrown",
+			"name":"Material_0",
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.30054205656051636,
-					0.17144127190113068,
-					0.09530755877494812,
-					1
-				],
+				"baseColorTexture":{
+					"index":0
+				},
 				"metallicFactor":0,
-				"roughnessFactor":0.5
+				"roughnessFactor":0.800000011920929
 			}
 		}
 	],
 	"meshes":[
 		{
-			"name":"Cylinder.001",
+			"name":"Mesh_0",
 			"primitives":[
 				{
 					"attributes":{
@@ -60,71 +52,90 @@
 			]
 		}
 	],
+	"textures":[
+		{
+			"sampler":0,
+			"source":0
+		}
+	],
+	"images":[
+		{
+			"mimeType":"image/jpeg",
+			"name":"Image_0",
+			"uri":"Image_0.jpg"
+		}
+	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":384,
+			"count":26034,
 			"max":[
-				0.5,
-				1,
-				0.5
+				0.396342009305954,
+				1.0005799531936646,
+				0.39706000685691833
 			],
 			"min":[
-				-0.5,
-				-1,
-				-0.5
+				-0.40067899227142334,
+				-1.0041799545288086,
+				-0.40145498514175415
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":384,
+			"count":26034,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":384,
+			"count":26034,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":768,
+			"count":150000,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":4608,
+			"byteLength":312408,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4608,
-			"byteOffset":4608,
+			"byteLength":312408,
+			"byteOffset":312408,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3072,
-			"byteOffset":9216,
+			"byteLength":208272,
+			"byteOffset":624816,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1536,
-			"byteOffset":12288,
+			"byteLength":300000,
+			"byteOffset":833088,
 			"target":34963
+		}
+	],
+	"samplers":[
+		{
+			"magFilter":9729,
+			"minFilter":9987
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":13824,
+			"byteLength":1133088,
 			"uri":"paperreel.bin"
 		}
 	]
