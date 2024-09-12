@@ -14,7 +14,7 @@ const BuildingCV2 = () => {
 
     // Storage level vars
     const level1 = 0;
-    const level2 = 2.5;
+    const level2 = 2.2;
     const dpSpacing = 1.15;
     const angle = THREE.MathUtils.degToRad(-60);
     const defaultDPs = 8;
