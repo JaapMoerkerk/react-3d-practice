@@ -4,10 +4,10 @@ import { OrbitControls, useGLTF, useFBX } from "@react-three/drei";
 import '../App.css';
 
 // FactoryModel with position and rotation control
-function FactoryModel({ position, rotation }) {
-    const { scene } = useGLTF('/3d-models/factory_model_colored.gltf');
-    return <primitive object={scene} position={position} rotation={rotation} scale={5} />;
-}
+// function FactoryModel({ position, rotation }) {
+//     const { scene } = useGLTF('/3d-models/factory_model_colored.gltf');
+//     return <primitive object={scene} position={position} rotation={rotation} scale={5} />;
+// }
 
 // ForkliftModel with WASD control
 function ForkliftModel() {
