@@ -1,0 +1,132 @@
+{
+  "machineData": [
+    {
+      "name": "Paper Reel Storage",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/PaperReelStorage.png",
+      "cameraPosition": {
+        "position": [-8, 18, -10],
+        "target": [10, 0, -10]
+      }
+    },
+    {
+      "name": "Flexo Blue",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/FlexoBlue.png",
+      "cameraPosition": {
+        "position": [26, 5, -70],
+        "target": [21, 2, -65]
+      }
+    },
+    {
+      "name": "EMBA160",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/EMBA160.png",
+      "cameraPosition": {
+        "position": [26, 5, -80],
+        "target": [21, 2, -70]
+      }
+    },
+    {
+      "name": "EMBA245",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/EMBA245.png",
+      "cameraPosition": {
+        "position": [29, 3, -96],
+        "target": [26, 0, -85]
+      }
+    },
+    {
+      "name": "EMBA245 packing delivery",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/EMBA245delivery.png",
+      "cameraPosition": {
+        "position": [34, 2, -87.5],
+        "target": [36, 1, -88]
+      }
+    },
+    {
+      "name": "Eterna",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/Eterna.png",
+      "cameraPosition": {
+        "position": [12, 3, -95],
+        "target": [15, 0, -100]
+      }
+    },
+    {
+      "name": "Glue kitchen",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/GlueKitchen.png",
+      "cameraPosition": {
+        "position": [57, 5, -115],
+        "target": [65, 0, -115]
+      }
+    },{
+      "name": "Baler",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/Baler.png",
+      "cameraPosition": {
+        "position": [3, 5, -132],
+        "target": [0, 3, -136]
+      }
+    },
+    {
+      "name": "Boiler room",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/BoilerRoom.png",
+      "cameraPosition": {
+        "position": [63, 5, -122],
+        "target": [70, 0, -124]
+      }
+    },
+    {
+      "name": "Reelstand and single facer",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/CorrugatorWetEnd.png",
+      "cameraPosition": {
+        "position": [38, 7, -115],
+        "target": [44, 3, -127]
+      }
+    },
+    {
+      "name": "Corrugator dry end",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/CorrugatorDryEnd.png",
+      "cameraPosition": {
+        "position": [-5, 7, -115],
+        "target": [-11, 2, -127]
+      }
+    },{
+      "name": "Corrugator slicer scorer",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/CorrugatorSlicerScorer.png",
+      "cameraPosition": {
+        "position": [-4, 3, -124],
+        "target": [-3, 1, -127]
+      }
+    },
+    {
+      "name": "Office",
+      "description": " ",
+      "date": "01-09-2024",
+      "path": "src/img/Office.png",
+      "cameraPosition": {
+        "position": [0, 3, 0],
+        "target": [1, 1, -1]
+      }
+    }
+  ]
+}

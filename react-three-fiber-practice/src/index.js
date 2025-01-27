@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './Pages/App';
 import Home from './Pages/Home';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import DynamicCloudPoints from "./Pages/DynamicPointCloud";
 import BuildingC from "./Pages/BuildingC";
 import BuildingCV2 from "./Pages/BuildingCV2";
+import Portfolio from "./Pages/Portfolio";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +15,7 @@ root.render(
     <Router>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/app" element={<App />} />
+            <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/dynamic-cloud-points" element={<DynamicCloudPoints />} />
             <Route path="/buildingc" element={<BuildingC />} />
             <Route path="/buildingc-v2" element={<BuildingCV2 />} />
