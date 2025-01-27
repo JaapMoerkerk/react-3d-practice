@@ -14,7 +14,8 @@ root.render(
   <React.StrictMode>
     <Router>
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Portfolio />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/dynamic-cloud-points" element={<DynamicCloudPoints />} />
             <Route path="/buildingc" element={<BuildingC />} />

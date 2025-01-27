@@ -1,10 +1,21 @@
 {
   "machineData": [
     {
+      "name": "Dakri Cartons Ltd",
+      "description": "Welcome to my digital internship portfolio. In this short visual tour I'd like to show the current state of my Blender model, rendered in this ThreeJS environment. Feel free to use the buttons to cycle through the machines and sections, where I have put some extra info and comparison pictures from real life."
+      ,
+      "date": "2024-2025 Fall semester",
+      "path": "/img/DakriCartons.jpg",
+      "cameraPosition": {
+        "position": [-60, 28, -120],
+        "target": [5, 0, -110]
+      }
+    },
+    {
       "name": "Paper Reel Storage",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/PaperReelStorage.png",
+      "description": "We start where I started my Blender journey in September, the paper reel storage for building A, B and C. Surprisingly, these very simple shapes and combinations of planes took me longer than any of the machines I made, which shows the learning curve more than anything. Here you see my representation of the blue division lines with 3D uprising planes.",
+      "date": "August - September 2024",
+      "path": "img/storagearea.jpg",
       "cameraPosition": {
         "position": [-8, 18, -10],
         "target": [10, 0, -10]
@@ -12,39 +23,39 @@
     },
     {
       "name": "Flexo Blue",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/FlexoBlue.png",
+      "description": "My very first machine. Looking back on it with my skills now it is hard to look at it, but at the time it was an amazing acomplishment. This was also my first animated model, with one flying paper board going through. The machine is a printer, printing custom ink prints on cartons.",
+      "date": "October 2024",
+      "path": "/img/FlexoBlue.jpg",
       "cameraPosition": {
-        "position": [26, 5, -70],
-        "target": [21, 2, -65]
+        "position": [29, 4, -63],
+        "target": [21, 1, -68]
       }
     },
     {
       "name": "EMBA160",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/EMBA160.png",
+      "description": "The EMBA160, a big creaser and cutter, was the first machine I made where we really started to see accurate details up to about a few centimeters, as you can see on the comparison here. It felt like a big step and the first time I really saw a lot opportunity for photo realism in this project.",
+      "date": "October 2024",
+      "path": "/img/EMBA160.jpg",
       "cameraPosition": {
-        "position": [26, 5, -80],
-        "target": [21, 2, -70]
+        "position": [9, 4, -80],
+        "target": [18, 1, -70]
       }
     },
     {
       "name": "EMBA245",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/EMBA245.png",
+      "description": "On completing the EMBA245, I made my first animated render flying through it and it is complete with animations. I think especially the front side we see here is beautifully detailed and accurate.",
+      "date": "November 2024",
+      "path": "/img/EMBA245.jpg",
       "cameraPosition": {
-        "position": [29, 3, -96],
-        "target": [26, 0, -85]
+        "position": [7, 4, -96],
+        "target": [15, 1, -85]
       }
     },
     {
       "name": "EMBA245 packing delivery",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/EMBA245delivery.png",
+      "description": "This delivery module of the EMBA245 provided me some amazing animation possibilities as seen here, it was a big development in that department. The real life purpose of this is packing a stack of prepared cartons.",
+      "date": "November 2024",
+      "path": "/img/emba245packingdelivery.jpg",
       "cameraPosition": {
         "position": [34, 2, -87.5],
         "target": [36, 1, -88]
@@ -52,38 +63,38 @@
     },
     {
       "name": "Eterna",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/Eterna.png",
+      "description": "The Eterna is the most photo realistic machine I have made to date. Not entirely coincidentally, as I've looked directly at this machine for 5 months sitting in my office chair. I love the animation of the blades and I was determined to make this detailed.",
+      "date": "November - December 2024",
+      "path": "/img/Eterna.png",
       "cameraPosition": {
-        "position": [12, 3, -95],
-        "target": [15, 0, -100]
+        "position": [7, 4, -96],
+        "target": [13, 1, -97]
       }
     },
     {
       "name": "Glue kitchen",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/GlueKitchen.png",
+      "description": "The glue kitchen will display levels of glue and steam in the digital twin, hence the silo's. In the digital twin itself these objects are manipulated so that I 'raise' the roof off it.",
+      "date": "December 2024",
+      "path": "/img/GlueKitchen.jpg",
       "cameraPosition": {
-        "position": [57, 5, -115],
-        "target": [65, 0, -115]
+        "position": [57, 5, -111],
+        "target": [65, 1, -115]
       }
     },{
       "name": "Baler",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/Baler.png",
+      "description": "The baler is used for crushing cardboard residue and other garbage. The details like ropes were a challenge but since I had done the baler in January, it was cool to see I could do this entire system in less than a day, including animation. It is one of the models that really showed how fast I can model now.",
+      "date": "January 2025",
+      "path": "/img/Baler.jpg",
       "cameraPosition": {
-        "position": [3, 5, -132],
-        "target": [0, 3, -136]
+        "position": [1, 10, -122],
+        "target": [6, 3, -136]
       }
     },
     {
       "name": "Boiler room",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/BoilerRoom.png",
+      "description": "The boiler room is more essential than you might think at first. Similar to the glue kitchen, here we will display fluid levels by 'raising' the roof in the digital twin and display a level.",
+      "date": "January 2025",
+      "path": "/img/BoilerRoom.jpg",
       "cameraPosition": {
         "position": [63, 5, -122],
         "target": [70, 0, -124]
@@ -91,41 +102,42 @@
     },
     {
       "name": "Reelstand and single facer",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/CorrugatorWetEnd.png",
+      "description": "The corrugator, finally. This 65 meter long beast was by far the biggest modeling project of the internship. This is the engine of the factory, making pure cardboard out of the paper reels, after which the cardboard gets used in all the other machines you have seen. This particular part glues paper together in a corrugated cardboard manufacturing process.",
+      "date": "December 2024 - January 2025",
+      "path": "/img/corrugatorreelstand.jpg",
       "cameraPosition": {
-        "position": [38, 7, -115],
-        "target": [44, 3, -127]
+        "position": [52, 4, -116],
+        "target": [54, 1, -123]
+      }
+    },
+    {
+      "name": "Corrugator slicer scorer",
+      "description": "The corrugator slicer scorer is an element where the corrugator cuts and creases the cardboard based on the sort order and the sort of carton it will be. ",
+      "date": "December 2024 - January 2025",
+      "path": "/img/CorrugatorSingleScorer.jpg",
+      "cameraPosition": {
+        "position": [-8, 5, -118],
+        "target": [-4, 2, -123]
       }
     },
     {
       "name": "Corrugator dry end",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/CorrugatorDryEnd.png",
+      "description": "The final part of this corrugator is the delivery section. One impressive feature here is the delivery section you see that elevates. This will be frame for frame in the digital twin based on the actual real time movement, but the hard thing about this was 'rigging', a form of animation that uses more physics (one object 'dragging' one up like here, for example).",
+      "date": "December 2024 - January 2025",
+      "path": "/img/CorrugatorDryEnd.jpg",
       "cameraPosition": {
         "position": [-5, 7, -115],
-        "target": [-11, 2, -127]
-      }
-    },{
-      "name": "Corrugator slicer scorer",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/CorrugatorSlicerScorer.png",
-      "cameraPosition": {
-        "position": [-4, 3, -124],
-        "target": [-3, 1, -127]
+        "target": [-13, 2, -127]
       }
     },
     {
       "name": "Office",
-      "description": " ",
-      "date": "01-09-2024",
-      "path": "src/img/Office.png",
+      "description": "This sort of 'easter egg' project was making our office from where the team works. The open windows make it actually possible to see the factory in the same way as in real life, I love to see this and it was a nice little sidebranch to learn more about details and sculpting.",
+      "date": "November 2024",
+      "path": "/img/Office.jpg",
       "cameraPosition": {
-        "position": [0, 3, 0],
-        "target": [1, 1, -1]
+        "position": [-23.5, 4.5, -96],
+        "target": [-18, 3, -99.5]
       }
     }
   ]
